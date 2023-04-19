@@ -1,0 +1,51 @@
+#!/bin/sh
+
+start() {
+    if [ ! -f /var/run/nginx.pid ]; then
+        /usr/local/sbin/nginx
+    fi
+}
+
+stop() {
+    if [ -f /var/run/nginx.pid ]; then
+        /usr/local/sbin/nginx -s stop
+    fi
+}
+
+reopen() {
+    if [ -f /var/run/nginx.pid ]; then
+        /usr/local/sbin/nginx -s reopen
+    fi
+}
+
+
+reload() {
+    if [ -f /var/run/nginx.pid ]; then
+        /usr/local/sbin/nginx -s reload
+    fi
+}
+
+status() {
+    if [ -e /var/run/nginx.pid ]; then
+        echo -e "\nnginx is running.\n"
+        exit 0
+    else
+        echo -e "\nnginx is not running.\n"
+        exit 1
+    fi
+}
+
+case $1 in
+    start) start
+        ;;
+    stop) stop
+        ;;
+    status) status
+        ;;
+    reopen) reopen
+        ;;
+    reload) reload
+        ;;
+    *) echo -e "\n$0 [start|stop|reopen|reload|status]\n"
+        ;;
+esac

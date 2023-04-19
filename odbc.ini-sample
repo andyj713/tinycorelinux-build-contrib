@@ -1,0 +1,9 @@
+[mssql-sample]
+Description=Test to SQL Server
+Driver=ODBC Driver 13 for SQL Server
+Trace=Yes
+TraceFile=/tmp/mssqlodbc.log
+Database=test
+Server=tcp:mssql-srv-host-name,1433
+Encrypt=no
+

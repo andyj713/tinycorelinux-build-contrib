@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# Start/stop/restart/graceful[ly restart]/graceful[ly]-stop
+# the Apache (httpd) web server.
+#
+# For information on these options, "man apachectl".
+
+ACTLX=$(which apachectl)
+test "$ACTLX" != "" && ACTLX="$ACTLX -k" || exit 1
+
+case "$1" in
+  'start')
+    $ACTLX start
+  ;;
+  'stop')
+    $ACTLX stop
+    killall httpd
+    # Remove both old and new .pid locations:
+    rm -f /var/run/httpd.pid /var/run/httpd/httpd.pid
+  ;;
+  'force-restart')
+    # Because sometimes restarting through apachectl just doesn't do the trick...
+    $ACTLX stop
+    killall httpd
+    # Remove both old and new .pid locations:
+    rm -f /var/run/httpd.pid /var/run/httpd/httpd.pid
+    $ACTLX start
+  ;;
+  'restart')
+    $ACTLX restart
+  ;;
+  'graceful')
+    $ACTLX graceful
+  ;;
+  'graceful-stop')
+    $ATCLX graceful-stop
+  ;;
+  *)
+    echo "Usage: $0 {start|stop|force-restart|restart|graceful|graceful-stop}"
+  ;;
+esac
+

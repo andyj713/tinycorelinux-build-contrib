@@ -1,0 +1,10 @@
+--- mariadb-10.1.13/storage/mroonga/vendor/groonga/CMakeLists.txt	2016-03-24 09:12:12.000000000 +0000
++++ mariadb-10.1.13-patched/storage/mroonga/vendor/groonga/CMakeLists.txt	2016-04-01 23:53:53.655972070 +0000
+@@ -550,7 +550,6 @@
+   add_subdirectory(src)
+   add_subdirectory(plugins)
+   add_subdirectory(include)
+-  add_subdirectory(data)
+ endif()
+ 
+ configure_file(config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config.h)

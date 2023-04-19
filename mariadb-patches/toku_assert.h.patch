@@ -1,0 +1,11 @@
+--- mariadb-10.1.13/storage/tokudb/PerconaFT/portability/toku_assert.h	2016-04-01 15:20:43.388896979 +0000
++++ mariadb-10.1.13-patched/storage/tokudb/PerconaFT/portability/toku_assert.h	2016-04-01 15:21:41.982234952 +0000
+@@ -50,7 +50,7 @@
+ #include <stdio.h>
+ 
+ #ifdef NDEBUG
+-#error NDEBUG should not be set
++#pragma message "NDEBUG should not be set"
+ #endif
+ 
+ static inline int get_error_errno(void);

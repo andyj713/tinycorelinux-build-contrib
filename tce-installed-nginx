@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rm -rf /tmp/nginx
+mkdir -m 700 -p /tmp/nginx
+chown nobody /tmp/nginx
+
