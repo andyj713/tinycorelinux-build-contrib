@@ -1,0 +1,24 @@
+--- dhclient-script-orig
++++ dhclient-script
+@@ -74,8 +74,8 @@
+         fi
+ 
+ 	if [ -f /etc/resolv.conf ]; then
+-	    chown --reference=/etc/resolv.conf $new_resolv_conf
+-	    chmod --reference=/etc/resolv.conf $new_resolv_conf
++	    chown root $new_resolv_conf
++	    chmod 755 $new_resolv_conf
+ 	fi
+         mv -f $new_resolv_conf /etc/resolv.conf
+     # DHCPv6
+@@ -101,8 +101,8 @@
+         fi
+ 
+ 	if [ -f /etc/resolv.conf ]; then
+-            chown --reference=/etc/resolv.conf $new_resolv_conf
+-            chmod --reference=/etc/resolv.conf $new_resolv_conf
++            chown root $new_resolv_conf
++            chmod 755 $new_resolv_conf
+ 	fi
+         mv -f $new_resolv_conf /etc/resolv.conf
+     fi
